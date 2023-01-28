@@ -8,258 +8,390 @@ TODO:
     - link titles with the PDB title
 -->
 <html lang="en">
- <meta charset="UTF-8"/>
- <meta name="viewport" content="width=device-width, user-scalable=no">
- <meta name="theme-color" content="#ee7711">
- <title>PDB search with periodic table</title>
- <script src="data.js"></script>
- <style type="text/css">
-html { width: 100%; font-family: sans-serif; background-color: #fdfdfd; }
-@media (max-width: 600px) { html { width: 600px; } }
-@media (max-width: 800px) { body { margin: 0; } }
-h1 { font-size: 24px; text-align: center; color: #444; margin-bottom: -10px; }
-h2 { font-size: 16px; text-align: center; color: #444; margin-bottom: 2px; }
-h2 span { cursor: pointer; border-style: outset; color: #444;
-          border-width: 2px; padding: 2px; font-weight: normal; }
-h2 span.on { border-style: inset; text-shadow: 1px 1px 0 #444; }
-#detour { font-size: 11px; line-height: 3; text-align: center; color: #333; }
-#footnote { font-size: 10px; text-align: center; color: #333; }
-#periodic { margin: 0 auto; border-spacing: 3px; }
-@media (min-width: 701px) and (max-width: 800px)
-  { #periodic { border-spacing: 2px; } }
-@media (max-width: 700px) { #periodic { border-spacing: 1px; } }
-#periodic tr td { background-color: #f8f8f8; width: 32px; height: 32px;
-                  cursor: pointer; border-style: outset; border-width: 3px; }
-@media (max-width: 700px) { #periodic tr td { border-width: 2px; } }
-#periodic tr td.empty { background-color: transparent; cursor: auto;
-                        border: none; text-align: left; }
-#periodic tr.spacer td { height: 10px; }
-#periodic tr td sup { font-size: 11px; display: block; text-align: center; }
-#periodic tr td { font-size: 15px; text-align: center; position: relative; }
-#periodic tr td.sel { border-style: inset; text-shadow: 1px 1px 1px #222; }
-#periodic tr td.sel sup::before { content: '\25CF'; color: #0f0; font-size: 8px;
-                                  position: absolute; top: -1px; left: 1px; }
-#desc { padding: 0 30px; color: #333; }
-#examples { margin: 0 auto; }
-#examples tr td { background-color: #fff; width: 167px; height: 167px;
-                  font-size: 48px; color: #aaa; text-align: center;
-                  background-size: cover; background-repeat: no-repeat;
-                  background-position: center center; }
-#examples tr td a { display: block; width: 100%; height: 100%;
-                    text-align: left; vertical-align: top;
-                    font-size: 16px; color: #888; text-decoration: none; }
-table.hide_optional tr.optional { display: none; }
- </style>
- <h1> Early-stage CyberSecurity Periodic&nbsp;table</h1>
- <table class="mt-3" id="periodic" style="margin-left:40px;">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<meta name="theme-color" content="#ee7711">
+<title>PDB search with periodic table</title>
+<script src="data.js"></script>
+<style type="text/css">
+  html {
+    width: 100%;
+    font-family: sans-serif;
+    background-color: #fdfdfd;
+  }
+
+  @media (max-width: 600px) {
+    html {
+      width: 600px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    body {
+      margin: 0;
+    }
+  }
+
+  h1 {
+    font-size: 24px;
+    text-align: center;
+    color: #444;
+    margin-bottom: -10px;
+  }
+
+  h2 {
+    font-size: 16px;
+    text-align: center;
+    color: #444;
+    margin-bottom: 2px;
+  }
+
+  h2 span {
+    cursor: pointer;
+    border-style: outset;
+    color: #444;
+    border-width: 2px;
+    padding: 2px;
+    font-weight: normal;
+  }
+
+  h2 span.on {
+    border-style: inset;
+    text-shadow: 1px 1px 0 #444;
+  }
+
+  #detour {
+    font-size: 11px;
+    line-height: 3;
+    text-align: center;
+    color: #333;
+  }
+
+  #footnote {
+    font-size: 10px;
+    text-align: center;
+    color: #333;
+  }
+
+  #periodic {
+    margin: 0 auto;
+    border-spacing: 3px;
+  }
+
+  @media (min-width: 701px) and (max-width: 800px) {
+    #periodic {
+      border-spacing: 2px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    #periodic {
+      border-spacing: 1px;
+    }
+  }
+
+  #periodic tr td {
+    background-color: #f8f8f8;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    border-style: outset;
+    border-width: 3px;
+  }
+
+  @media (max-width: 700px) {
+    #periodic tr td {
+      border-width: 2px;
+    }
+  }
+
+  #periodic tr td.empty {
+    background-color: transparent;
+    cursor: auto;
+    border: none;
+    text-align: left;
+  }
+
+  #periodic tr.spacer td {
+    height: 10px;
+  }
+
+  #periodic tr td sup {
+    font-size: 11px;
+    display: block;
+    text-align: center;
+  }
+
+  #periodic tr td {
+    font-size: 15px;
+    text-align: center;
+    position: relative;
+  }
+
+  #periodic tr td.sel {
+    border-style: inset;
+    text-shadow: 1px 1px 1px #222;
+  }
+
+  #periodic tr td.sel sup::before {
+    content: '\25CF';
+    color: #0f0;
+    font-size: 8px;
+    position: absolute;
+    top: -1px;
+    left: 1px;
+  }
+
+  #desc {
+    padding: 0 30px;
+    color: #333;
+  }
+
+  #examples {
+    margin: 0 auto;
+  }
+
+  #examples tr td {
+    background-color: #fff;
+    width: 167px;
+    height: 167px;
+    font-size: 48px;
+    color: #aaa;
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  #examples tr td a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    vertical-align: top;
+    font-size: 16px;
+    color: #888;
+    text-decoration: none;
+  }
+
+  table.hide_optional tr.optional {
+    display: none;
+  }
+</style>
+<h1> Early-stage CyberSecurity Periodic&nbsp;table</h1>
+<table class="mt-3" id="periodic" style="margin-left:40px;">
   <tr id="p1">
-   <td id="H" title="Hydrogen">Ev<sup>EverCompliant</sup></td>
-   <td id="D" title="Deuterium">Qu<sup>QuantaVerse</sup></td>
-   <td class="empty" colspan="14"></td>
+    <td id="H" title="Hydrogen">Ev<sup>EverCompliant</sup></td>
+    <td id="D" title="Deuterium">Qu<sup>QuantaVerse</sup></td>
+    <td class="empty" colspan="14"></td>
   </tr>
   <tr id="p2">
-   <td id="Li" title="Lithium">Ns<sup>NS8</sup></td>
-   <td id="Be" title="Beryllium">Vs<sup>VU security</sup></td>
-   <td class="empty" id="desc" colspan="10" rowspan="2"></td>
+    <td id="Li" title="Lithium">Ns<sup>NS8</sup></td>
+    <td id="Be" title="Beryllium">Vs<sup>VU security</sup></td>
+    <td class="empty" id="desc" colspan="10" rowspan="2"></td>
   </tr>
   <tr id="p3">
-   <td id="Na" title="Sodium"><sup>Ca</sup>CashShield</td>
-   <td id="Mg" title="Magnesium"><sup>Nc</sup>Next Caller</td>
+    <td id="Na" title="Sodium">Ca<sup>CashShield</sup></td>
+    <td id="Mg" title="Magnesium">Nc<sup>Next Caller</sup></td>
   </tr>
   <tr id="p4">
-   <td id="K"  title="Potassium">St<sup>Shumei Technology</sup></td>
-   <td id="Ca" title="Calcium">S&S<sup>Sum & Substance</sup></td>
-   <td id="Sc" title="Scandium">Inr<sup>Intezer</sup></td>
-   <td id="Ti" title="Titanium">Re<sup>RedLock</sup></td>
-   <td id="V"  title="Vanadium">Jn<sup>Javelin Networks</sup></td>
-   <td id="Cr" title="Chromium">Lo<sup>LogicHub</sup></td>
-   <td id="Mn" title="Manganese">ib<sup>iboss</sup></td>
-   <td id="Fe" title="Iron">Sc<sup>ScaleFT</sup></td>
-   <td id="Co" title="Cobalt">Ps<sup>PureSec</sup></td>
-   <td id="Ni" title="Nickel">Tr<sup>Trilio</sup></td>
-   <td id="Cu" title="Copper">Cry<sup>Credly</sup></td>
-   <td id="Zn" title="Zinc">Tril<sup>Gem</sup></td>
-   <td id="Ga" title="Gallium">Ai<sup>AimBrain</sup></td>
-   <td id="Ge" title="Germanium">B-<sup>B-Secur</sup></td>
-   <td id="As" title="Arsenic">Ond<sup>oneID</sup></td>
-   <td id="Se" title="Selenium">Bn<sup>Bayshore Networks</sup></td>
-   <td id="Br" title="Bromine">Da<sup>Device Authority</sup></td>
-   <td id="Kr" title="Krypton">Pfp<sup>Power Fingerprinting</sup></td>
+    <td id="K" title="Potassium">St<sup>Shumei Technology</sup></td>
+    <td id="Ca" title="Calcium">S&S<sup>Sum & Substance</sup></td>
+    <td id="Sc" title="Scandium">Inr<sup>Intezer</sup></td>
+    <td id="Ti" title="Titanium">Re<sup>RedLock</sup></td>
+    <td id="V" title="Vanadium">Jn<sup>Javelin Networks</sup></td>
+    <td id="Cr" title="Chromium">Lo<sup>LogicHub</sup></td>
+    <td id="Mn" title="Manganese">ib<sup>iboss</sup></td>
+    <td id="Fe" title="Iron">Sc<sup>ScaleFT</sup></td>
+    <td id="Co" title="Cobalt">Ps<sup>PureSec</sup></td>
+    <td id="Ni" title="Nickel">Tr<sup>Trilio</sup></td>
+    <td id="Cu" title="Copper">Cry<sup>Credly</sup></td>
+    <td id="Zn" title="Zinc">Tril<sup>Gem</sup></td>
+    <td id="Ga" title="Gallium">Ai<sup>AimBrain</sup></td>
+    <td id="Ge" title="Germanium">B-<sup>B-Secur</sup></td>
+    <td id="As" title="Arsenic">Ond<sup>oneID</sup></td>
+    <td id="Se" title="Selenium">Bn<sup>Bayshore Networks</sup></td>
+    <td id="Br" title="Bromine">Da<sup>Device Authority</sup></td>
+    <td id="Kr" title="Krypton">Pfp<sup>Power Fingerprinting</sup></td>
   </tr>
   <tr id="p5">
-   <td id="Rb" title="Rubidium">Ri<sup>Rippleshot</sup></td>
-   <td id="Sr" title="Strontium">ZI<sup>Zyudly Labs</sup></td>
-   <td id="Y"  title="Yttrium">Na<sup>Namogoo</sup></td>
-   <td id="Zr" title="Zirconium">Cle<sup>ReversingLabs</sup></td>
-   <td id="Nb" title="Niobium">TI<sup>ThinAir Labs</sup></td>
-   <td id="Mo" title="Molybdenum">Zo<sup>ZoneFox</sup></td>
-   <td id="Tc" title="Technetium">New<sup>Netwrix</sup></td>
-   <td id="Ru" title="Ruthenium">Ap<sup>Aporeto</sup></td>
-   <td id="Rh" title="Rhodium">Os<sup>Obsidian Security</sup></td>
-   <td id="Pd" title="Palladium">Str<sup>StackRox</sup></td>
-   <td id="Ag" title="Silver">Yu<sup>Yubico</sup></td>
-   <td id="Cd" title="Cadmium">Sdo<sup>Secret Double Octopus</sup></td>
-   <td id="In" title="Indium">Mo<sup>MoQom</sup></td>
-   <td id="Sn" title="Tin">St<sup>Secured Touch</sup></td>
-   <td id="Sb" title="Antimony">Unq<sup>Uniquid</sup></td>
-   <td id="Te" title="Tellurium">Sca<sup>Scada Fence</sup></td>
-   <td id="I"  title="Iodine">Noz<sup>Nozomi Networks</sup></td>
-   <td id="Xe" title="Xenon">Nex<sup>NexDefense</sup></td>
+    <td id="Rb" title="Rubidium">Ri<sup>Rippleshot</sup></td>
+    <td id="Sr" title="Strontium">ZI<sup>Zyudly Labs</sup></td>
+    <td id="Y" title="Yttrium">Na<sup>Namogoo</sup></td>
+    <td id="Zr" title="Zirconium">Cle<sup>ReversingLabs</sup></td>
+    <td id="Nb" title="Niobium">TI<sup>ThinAir Labs</sup></td>
+    <td id="Mo" title="Molybdenum">Zo<sup>ZoneFox</sup></td>
+    <td id="Tc" title="Technetium">New<sup>Netwrix</sup></td>
+    <td id="Ru" title="Ruthenium">Ap<sup>Aporeto</sup></td>
+    <td id="Rh" title="Rhodium">Os<sup>Obsidian Security</sup></td>
+    <td id="Pd" title="Palladium">Str<sup>StackRox</sup></td>
+    <td id="Ag" title="Silver">Yu<sup>Yubico</sup></td>
+    <td id="Cd" title="Cadmium">Sdo<sup>Secret Double Octopus</sup></td>
+    <td id="In" title="Indium">Mo<sup>MoQom</sup></td>
+    <td id="Sn" title="Tin">St<sup>Secured Touch</sup></td>
+    <td id="Sb" title="Antimony">Unq<sup>Uniquid</sup></td>
+    <td id="Te" title="Tellurium">Sca<sup>Scada Fence</sup></td>
+    <td id="I" title="Iodine">Noz<sup>Nozomi Networks</sup></td>
+    <td id="Xe" title="Xenon">Nex<sup>NexDefense</sup></td>
   </tr>
   <tr id="p6">
-   <td id="Cs" title="Caesium">Ra<sup>Ravelin</sup></td>
-   <td id="Ba" title="Barium">Pr<sup>Precognitive</sup></td>
-   <td id="Hf" title="Hafnium">On<sup>OPAQ Networks</sup></td>
-   <td id="Hf" title="Hafnium">Cy<sup>Cybric</sup></td>
-   <td id="Ta" title="Tantalum">Vs<sup>Veriflow Systems</sup></td>
-   <td id="W"  title="Tungsten">Inc<sup>Infocyte</sup></td>
-   <td id="Re" title="Rhenium">Shl<sup>ShiftLeft</sup></td>
-   <td id="Os" title="Osmium">En<sup>Edgewise Networks</sup></td>
-   <td id="Ir" title="Iridium">Av<sup>AVANAN</sup></td>
-   <td id="Pt" title="Platinum">AI<sup>Alcide</sup></td>
-   <td id="Au" title="Gold">Un<sup>UnifyID</sup></td>
-   <td id="Hg" title="Mercury">Cac<sup>Callsign</sup></td>
-   <td id="Tl" title="Thallium">Rns<sup>Resilient Network systems</sup></td>
-   <td id="Pb" title="Lead">Id<sup>ID Dataweb</sup></td>
-   <td id="Bi" title="Bismuth">Au<sup>Authenteq</sup></td>
-   <td id="Po" title="Polonium">Idd<sup>Identify3D</sup></td>
-   <td id="At" title="Astatine">lo<sup>lo Tium</sup></td>
-   <td id="Rn" title="Radon">Sur<sup>Securonix</sup></td>
+    <td id="Cs" title="Caesium">Ra<sup>Ravelin</sup></td>
+    <td id="Ba" title="Barium">Pr<sup>Precognitive</sup></td>
+    <td id="Hf" title="Hafnium">On<sup>OPAQ Networks</sup></td>
+    <td id="Hf" title="Hafnium">Cy<sup>Cybric</sup></td>
+    <td id="Ta" title="Tantalum">Vs<sup>Veriflow Systems</sup></td>
+    <td id="W" title="Tungsten">Inc<sup>Infocyte</sup></td>
+    <td id="Re" title="Rhenium">Shl<sup>ShiftLeft</sup></td>
+    <td id="Os" title="Osmium">En<sup>Edgewise Networks</sup></td>
+    <td id="Ir" title="Iridium">Av<sup>AVANAN</sup></td>
+    <td id="Pt" title="Platinum">AI<sup>Alcide</sup></td>
+    <td id="Au" title="Gold">Un<sup>UnifyID</sup></td>
+    <td id="Hg" title="Mercury">Cac<sup>Callsign</sup></td>
+    <td id="Tl" title="Thallium">Rns<sup>Resilient Network systems</sup></td>
+    <td id="Pb" title="Lead">Id<sup>ID Dataweb</sup></td>
+    <td id="Bi" title="Bismuth">Au<sup>Authenteq</sup></td>
+    <td id="Po" title="Polonium">Idd<sup>Identify3D</sup></td>
+    <td id="At" title="Astatine">lo<sup>lo Tium</sup></td>
+    <td id="Rn" title="Radon">Sur<sup>Securonix</sup></td>
   </tr>
   <tr id="p7">
-   <td id="Fr" title="Francium">Ko<sup>Konduto</sup></td>
-   <td id="Ra" title="Radium">EI<sup>Elliptic</sup></td>
-   <td id="Rf" title="Rutherfordium">JI<sup>Jask Labs</sup></td>
-   <td id="Rf" title="Rutherfordium">Se<sup>SECDO</sup></td>
-   <td id="Db" title="Dubnium">Aws<sup>Awake Security</sup></td>
-   <td id="Sg" title="Seaborgium">Ne<sup>NeuVector</sup></td>
-   <td id="Bh" title="Bohrium">Ca8<sup>Capsule8</sup></td>
-   <td id="Hs" title="Hassium">Ti<sup>Tigera</sup></td>
-   <td id="Mt" title="Meitnerium">SeS<sup>Sensu</sup></td>
-   <td id="Ds" title="Darmstadtium">CyX<sup>CrytoMove</sup></td>
-   <td id="Rg" title="Roentgenium">Ei<sup>Evident ID</sup></td>
-   <td id="Cn" title="Copernicium">Ts<sup>Transmit Security</sup></td>
-   <td id="Nh" title="Nihonium">shr<sup>ShoCard</sup></td>
-   <td id="Fl" title="Flerovium">Apk<sup>TwoSense</sup></td>
-   <td id="Mc" title="Moscovium">Dr<sup>Dragos</sup></td>
-   <td id="Lv" title="Livermorium">Ind<sup>Indegy</sup></td>
-   <td id="Ts" title="Tennessine">Mi<sup>Microsec</sup></td>
-   <td id="Og" title="Oganesson">Wi<sup>WireTap</sup></td>
+    <td id="Fr" title="Francium">Ko<sup>Konduto</sup></td>
+    <td id="Ra" title="Radium">EI<sup>Elliptic</sup></td>
+    <td id="Rf" title="Rutherfordium">JI<sup>Jask Labs</sup></td>
+    <td id="Rf" title="Rutherfordium">Se<sup>SECDO</sup></td>
+    <td id="Db" title="Dubnium">Aws<sup>Awake Security</sup></td>
+    <td id="Sg" title="Seaborgium">Ne<sup>NeuVector</sup></td>
+    <td id="Bh" title="Bohrium">Ca8<sup>Capsule8</sup></td>
+    <td id="Hs" title="Hassium">Ti<sup>Tigera</sup></td>
+    <td id="Mt" title="Meitnerium">SeS<sup>Sensu</sup></td>
+    <td id="Ds" title="Darmstadtium">CyX<sup>CrytoMove</sup></td>
+    <td id="Rg" title="Roentgenium">Ei<sup>Evident ID</sup></td>
+    <td id="Cn" title="Copernicium">Ts<sup>Transmit Security</sup></td>
+    <td id="Nh" title="Nihonium">shr<sup>ShoCard</sup></td>
+    <td id="Fl" title="Flerovium">Apk<sup>TwoSense</sup></td>
+    <td id="Mc" title="Moscovium">Dr<sup>Dragos</sup></td>
+    <td id="Lv" title="Livermorium">Ind<sup>Indegy</sup></td>
+    <td id="Ts" title="Tennessine">Mi<sup>Microsec</sup></td>
+    <td id="Og" title="Oganesson">Wi<sup>WireTap</sup></td>
   </tr>
-  <tr class="spacer"><td class="empty" colspan=18></td></tr>
-  <tr>
-   <td class="empty" colspan="2"></td>
-   <td id="La" title="Lanthanum">Ma<sup>MACH37</sup></td>
-   <td id="Ce" title="Cerium">Yc<sup>Y combinator</sup></td>
-   <td id="Pr" title="Praseodymium">Nea<sup>New Enterprise Associates</sup></td>
-   <td id="Nd" title="Neodymium">Cla<sup>Cyber London Accelator</sup></td>
-   <td id="Pm" title="Promethium">Te<sup>Techstars</sup></td>
-   <td id="Sm" title="Samarium">a16z<sup>Antreessan Horowitz</sup></td>
-   <td id="Eu" title="Europium">Acc<sup>Accel Partners</sup></td>
-   <td id="Gd" title="Gadolinium">406<sup>406 Ventures</sup></td>
-   <td id="Tb" title="Terbium">Acm<sup>Accomplice</sup></td>
-   <td id="Dy" title="Dysprosium">Pcg<sup>Paladin Capital Group</sup></td>
-   <td class="empty"></td>
+  <tr class="spacer">
+    <td class="empty" colspan=18></td>
   </tr>
   <tr>
-   <td class="empty" colspan="2"></td>
-   <td id="Ac" title="Actinium">500<sup>500 Accelerator</sup></td>
-   <td id="Th" title="Thorium">Frc<sup>First Round Capital</sup></td>
-   <td id="Pa" title="Protactinium">Yv<sup>YL Ventures</sup></td>
-   <td id="U"  title="Uranium">ff<sup>ff Venture Capital</sup></td>
-   <td id="Np" title="Neptunium">Aa<sup>Alchemist Accelerator</sup></td>
-   <td id="Pu" title="Plutonium">Nvp<sup>Norway Venture Partners</sup></td>
-   <td id="Am" title="Americium">Kp<sup>KPCB</sup></td>
-   <td id="Cm" title="Curium">All<sup>Allegis Cyber</sup></td>
-   <td id="Bk" title="Berkelium">Lvp<sup>Lightspeed Venture Partners</sup></td>
-   <td id="Cf" title="Californium">Bvp<sup>Besemmer Venture Partners</sup></td>
-   <td class="empty"></td>
+    <td class="empty" colspan="2"></td>
+    <td id="La" title="Lanthanum">Ma<sup>MACH37</sup></td>
+    <td id="Ce" title="Cerium">Yc<sup>Y combinator</sup></td>
+    <td id="Pr" title="Praseodymium">Nea<sup>New Enterprise Associates</sup></td>
+    <td id="Nd" title="Neodymium">Cla<sup>Cyber London Accelator</sup></td>
+    <td id="Pm" title="Promethium">Te<sup>Techstars</sup></td>
+    <td id="Sm" title="Samarium">a16z<sup>Antreessan Horowitz</sup></td>
+    <td id="Eu" title="Europium">Acc<sup>Accel Partners</sup></td>
+    <td id="Gd" title="Gadolinium">406<sup>406 Ventures</sup></td>
+    <td id="Tb" title="Terbium">Acm<sup>Accomplice</sup></td>
+    <td id="Dy" title="Dysprosium">Pcg<sup>Paladin Capital Group</sup></td>
+    <td class="empty"></td>
   </tr>
- </table>
- <table class="mt-3" id="periodic" style="margin-right:-33em; margin-top:-28.6em;">
+  <tr>
+    <td class="empty" colspan="2"></td>
+    <td id="Ac" title="Actinium">500<sup>500 Accelerator</sup></td>
+    <td id="Th" title="Thorium">Frc<sup>First Round Capital</sup></td>
+    <td id="Pa" title="Protactinium">Yv<sup>YL Ventures</sup></td>
+    <td id="U" title="Uranium">ff<sup>ff Venture Capital</sup></td>
+    <td id="Np" title="Neptunium">Aa<sup>Alchemist Accelerator</sup></td>
+    <td id="Pu" title="Plutonium">Nvp<sup>Norway Venture Partners</sup></td>
+    <td id="Am" title="Americium">Kp<sup>KPCB</sup></td>
+    <td id="Cm" title="Curium">All<sup>Allegis Cyber</sup></td>
+    <td id="Bk" title="Berkelium">Lvp<sup>Lightspeed Venture Partners</sup></td>
+    <td id="Cf" title="Californium">Bvp<sup>Besemmer Venture Partners</sup></td>
+    <td class="empty"></td>
+  </tr>
+</table>
+<table class="mt-3" id="periodic" style="margin-right:-33em; margin-top:-28.6em;">
   <tr id="p4">
-    <td id="K"  title="Potassium">Ene<sup>Enveil</sup></td>
+    <td id="K" title="Potassium">Ene<sup>Enveil</sup></td>
     <td id="Ca" title="Calcium">Ta<sup>Tanker</sup></td>
     <td id="Sc" title="Scandium">Cyb<sup>Cybrary</sup></td>
     <td id="Ti" title="Titanium">Iro<sup>IRON SCALES</sup></td>
-    <td id="V"  title="Vanadium">Rub<sup>Rubica</sup></td>
+    <td id="V" title="Vanadium">Rub<sup>Rubica</sup></td>
     <td id="Cr" title="Chromium">Mcu<sup>Magic Cube</sup></td>
     <td id="Mn" title="Manganese">Or<sup>Orchid</sup></td>
     <td id="Fe" title="Iron">MuB<sup>MatchUp Box</sup></td>
     <td id="Co" title="Cobalt">Ec<sup>Eclypsium</sup></td>
-   </tr>
-   <tr id="p4">
-    <td id="K"  title="Potassium">Fo<sup>Fortanix</sup></td>
+  </tr>
+  <tr id="p4">
+    <td id="K" title="Potassium">Fo<sup>Fortanix</sup></td>
     <td id="Ca" title="Calcium">Css<sup>Continuum Security</sup></td>
     <td id="Sc" title="Scandium">Si<sup>Sixgill</sup></td>
     <td id="Ti" title="Titanium">Gr<sup>GreatHorn</sup></td>
-    <td id="V"  title="Vanadium">Sri<sup>Senrio</sup></td>
+    <td id="V" title="Vanadium">Sri<sup>Senrio</sup></td>
     <td id="Cr" title="Chromium">Tlo<sup>Tortuga Logic</sup></td>
     <td id="Mn" title="Manganese">Prv<sup>Privitar</sup></td>
     <td id="Fe" title="Iron">Mne<sup>Mysterium Networks</sup></td>
     <td id="Co" title="Cobalt">Ref<sup>ReFirm Labs</sup></td>
-   </tr>
-   <tr id="p4">
-    <td id="K"  title="Potassium">Nu<sup>NuCypher</sup></td>
+  </tr>
+  <tr id="p4">
+    <td id="K" title="Potassium">Nu<sup>NuCypher</sup></td>
     <td id="Ca" title="Calcium">Vse<sup>Virgil Security</sup></td>
     <td id="Sc" title="Scandium">Li<sup>LifeRaft</sup></td>
     <td id="Ti" title="Titanium">Es<sup>Elevate Security</sup></td>
-    <td id="V"  title="Vanadium">MI<sup>Minerva Labs</sup></td>
+    <td id="V" title="Vanadium">MI<sup>Minerva Labs</sup></td>
     <td id="Cr" title="Chromium">Mga<sup>Medigate</sup></td>
     <td id="Mn" title="Manganese">Prp<sup>Privacy</sup></td>
     <td id="Fe" title="Iron">Mee<sup>Meeco</sup></td>
     <td id="Co" title="Cobalt">Th<sup>Threat Informer</sup></td>
-   </tr>
-   <tr id="p4">
-    <td id="K"  title="Potassium">Ser<sup>Sepior</sup></td>
+  </tr>
+  <tr id="p4">
+    <td id="K" title="Potassium">Ser<sup>Sepior</sup></td>
     <td id="Ca" title="Calcium">Dao<sup>Dataloop.IO</sup></td>
     <td id="Sc" title="Scandium">Su<sup>Surf Watch</sup></td>
     <td id="Ti" title="Titanium">Sta<sup>SlashNext</sup></td>
-    <td id="V"  title="Vanadium">Cs<sup>Cyber swarm</sup></td>
+    <td id="V" title="Vanadium">Cs<sup>Cyber swarm</sup></td>
     <td id="Cr" title="Chromium">Pro<sup>Protenus</sup></td>
     <td id="Mn" title="Manganese">Trll<sup>Brave Software</sup></td>
     <td id="Fe" title="Iron">Cy<sup>Safer VPN</sup></td>
     <td id="Co" title="Cobalt">Ve<sup>Verodin</sup></td>
-   </tr>
-   <tr id="p4">
-    <td id="K"  title="Potassium">An<sup>Anon.ai</sup></td>
+  </tr>
+  <tr id="p4">
+    <td id="K" title="Potassium">An<sup>Anon.ai</sup></td>
     <td id="Ca" title="Calcium">Kr<sup>Krypt.co</sup></td>
     <td id="Sc" title="Scandium">4I<sup>4IQ</sup></td>
     <td id="Ti" title="Titanium">Gy<sup>Gyomo</sup></td>
-    <td id="V"  title="Vanadium">Cye<sup>Cymmetria</sup></td>
+    <td id="V" title="Vanadium">Cye<sup>Cymmetria</sup></td>
     <td id="Cr" title="Chromium">Mcr<sup>Medcrypt</sup></td>
     <td id="Mn" title="Manganese">SI<sup>Sirin Labs</sup></td>
     <td id="Fe" title="Iron">Ke<sup>Keybase</sup></td>
     <td id="Co" title="Cobalt">At<sup>AttackIQ</sup></td>
     <td id="Co" title="Cobalt">Up<sup>Upstream</sup></td>
-   </tr>
-   <tr id="p4">
-    <td id="K"  title="Potassium">Nub<sup>Nubo</sup></td>
+  </tr>
+  <tr id="p4">
+    <td id="K" title="Potassium">Nub<sup>Nubo</sup></td>
     <td id="Ca" title="Calcium">Drd<sup>Drie</sup></td>
     <td id="Sc" title="Scandium">418<sup>418 Intelligence</sup></td>
     <td id="Ti" title="Titanium">Cyy<sup>Cybe Ready</sup></td>
-    <td id="V"  title="Vanadium">Db<sup>Deceptive Bytes</sup></td>
+    <td id="V" title="Vanadium">Db<sup>Deceptive Bytes</sup></td>
     <td id="Cr" title="Chromium">Hel<sup>Health Linkages</sup></td>
     <td id="Mn" title="Manganese">D-<sup>D-ID</sup></td>
     <td id="Fe" title="Iron">Pl<sup>Privacy Labs</sup></td>
     <td id="Co" title="Cobalt">Ba<sup>Balbix</sup></td>
     <td id="Co" title="Cobalt">Rsa<sup>Runsafe</sup></td>
-   </tr>
+  </tr>
 </table>
- <!-- <h2>
+<!-- <h2>
   <span id="show5" class="on">5</span>
   <span id="show15">15</span>
   examples
   <span id="showPics" class="on">with pics</span>
  </h2> -->
- <table id="examples" class="hide_optional"><tr>
-  <!-- <td>&#xD7;</td><td>&#xD7;</td><td>&#xD7;</td><td>&#xD7;</td><td>&#xD7;</td>
+<table id="examples" class="hide_optional">
+  <tr>
+    <!-- <td>&#xD7;</td><td>&#xD7;</td><td>&#xD7;</td><td>&#xD7;</td><td>&#xD7;</td>
  </tr><tr class="optional">
   <td>&#xD7;</td><td>&#xD7;</td><td>&#xD7;</td><td>&#xD7;</td><td>&#xD7;</td>
  </tr><tr class="optional">
   <td>&#xD7;</td><td>&#xD7;</td><td>&#xD7;</td><td>&#xD7;</td><td>&#xD7;</td> -->
- </tr></table>
- <!-- <div id="detour">
+  </tr>
+</table>
+<!-- <div id="detour">
      See other <a href="https://project-gemmi.github.io/pdb-stats/">GEMMI visualizations</a>.
  </div>
  <div id="footnote">
@@ -268,159 +400,160 @@ table.hide_optional tr.optional { display: none; }
    Last update: 2022-11-01, 197516 PDB entries.
    <a href="https://github.com/project-gemmi/periodic-table">Source code & info...</a>
  </div> -->
- <script>
+<script>
 
-// global data defined in data.js
-var elem_count; // a list of 118+2 numbers
-var ids_by_elems; // {C_N_O_S_Zn: [n, '1pdb', '2pdb', ...]}, length >2500
+  // global data defined in data.js
+  var elem_count; // a list of 118+2 numbers
+  var ids_by_elems; // {C_N_O_S_Zn: [n, '1pdb', '2pdb', ...]}, length >2500
 
-window.onload = (function () {
-'use strict';
+  window.onload = (function () {
+    'use strict';
 
-// other globals
-var desc;
-var example_tds;
-var show_pics = true;
-var show15 = false;
-var state = []; // 1-based
-for (var i_ = 0; i_ < 118+2; i_++) state.push(false);
-var elements = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na',
-'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar', 'K', 'Ca', 'Sc', 'Ti', 'V', 'Cr',
-'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge', 'As', 'Se', 'Br', 'Kr', 'Rb',
-'Sr', 'Y', 'Zr', 'Nb', 'Mo', 'Tc', 'Ru', 'Rh', 'Pd', 'Ag', 'Cd', 'In', 'Sn',
-'Sb', 'Te', 'I', 'Xe', 'Cs', 'Ba', 'La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu',
-'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu', 'Hf', 'Ta', 'W', 'Re', 'Os',
-'Ir', 'Pt', 'Au', 'Hg', 'Tl', 'Pb', 'Bi', 'Po', 'At', 'Rn', 'Fr', 'Ra', 'Ac',
-'Th', 'Pa', 'U', 'Np', 'Pu', 'Am', 'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No',
-'Lr', 'Rf', 'Db', 'Sg', 'Bh', 'Hs', 'Mt', 'Ds', 'Rg', 'Cn', 'Nh', 'Fl', 'Mc',
-'Lv', 'Ts', 'Og',
-'D', 'X'];
+    // other globals
+    var desc;
+    var example_tds;
+    var show_pics = true;
+    var show15 = false;
+    var state = []; // 1-based
+    for (var i_ = 0; i_ < 118 + 2; i_++) state.push(false);
+    var elements = ['H', 'He', 'Li', 'Be', 'B', 'C', 'N', 'O', 'F', 'Ne', 'Na',
+      'Mg', 'Al', 'Si', 'P', 'S', 'Cl', 'Ar', 'K', 'Ca', 'Sc', 'Ti', 'V', 'Cr',
+      'Mn', 'Fe', 'Co', 'Ni', 'Cu', 'Zn', 'Ga', 'Ge', 'As', 'Se', 'Br', 'Kr', 'Rb',
+      'Sr', 'Y', 'Zr', 'Nb', 'Mo', 'Tc', 'Ru', 'Rh', 'Pd', 'Ag', 'Cd', 'In', 'Sn',
+      'Sb', 'Te', 'I', 'Xe', 'Cs', 'Ba', 'La', 'Ce', 'Pr', 'Nd', 'Pm', 'Sm', 'Eu',
+      'Gd', 'Tb', 'Dy', 'Ho', 'Er', 'Tm', 'Yb', 'Lu', 'Hf', 'Ta', 'W', 'Re', 'Os',
+      'Ir', 'Pt', 'Au', 'Hg', 'Tl', 'Pb', 'Bi', 'Po', 'At', 'Rn', 'Fr', 'Ra', 'Ac',
+      'Th', 'Pa', 'U', 'Np', 'Pu', 'Am', 'Cm', 'Bk', 'Cf', 'Es', 'Fm', 'Md', 'No',
+      'Lr', 'Rf', 'Db', 'Sg', 'Bh', 'Hs', 'Mt', 'Ds', 'Rg', 'Cn', 'Nh', 'Fl', 'Mc',
+      'Lv', 'Ts', 'Og',
+      'D', 'X'];
 
-//var PDB_LINK = 'https://www.ebi.ac.uk/pdbe/entry/pdb/';
-var PDB_LINK = 'https://www.rcsb.org/structure/';
-function image_link(pdb_id) {
-  return 'https://cdn.rcsb.org/images/structures/' + pdb_id + '_model-1.jpeg';
-}
-
-function contains(key, names) {
-  for (var i = 0; i < names.length; i++) {
-    if (key.indexOf(names[i]) === -1) return false;
-  }
-  return true;
-}
-
-function toggle_elem(td) {
-  var n = elements.indexOf(td.id);
-  var sel = state[n];
-  state[n] = !sel;
-  td.className = sel ? '' : 'sel';
-  update();
-};
-
-function update() {
-  var NE = 15; // number of examples
-  var names = [];
-  var padded_names = [];
-  var indices = [];
-  for (var i = 0; i < elements.length; i++) {
-    var element = elements[i];
-    if (state[i]) {
-      names.push(element);
-      indices.push(i);
-      padded_names.push(element.length == 1 ? element + '_' : element);
+    //var PDB_LINK = 'https://www.ebi.ac.uk/pdbe/entry/pdb/';
+    var PDB_LINK = 'https://www.rcsb.org/structure/';
+    function image_link(pdb_id) {
+      return 'https://cdn.rcsb.org/images/structures/' + pdb_id + '_model-1.jpeg';
     }
-  }
-  var exact_key = padded_names.join('');
-  if (names.length === 0) {
-    desc.innerHTML = 'Select elements...';
-    for (var i = 0; i < example_tds.length; i++) {
-      setup_example(example_tds[i], null);
+
+    function contains(key, names) {
+      for (var i = 0; i < names.length; i++) {
+        if (key.indexOf(names[i]) === -1) return false;
+      }
+      return true;
     }
-    return;
-  }
-  var exact_match = ids_by_elems[exact_key];
-  var only_count = exact_match ? exact_match[0] : 0;
-  var example_codes = only_count > 0 ? exact_match.slice(1) : [];
-  var incl_count = 0;
-  for (var k in ids_by_elems) {
-    if (contains(k, padded_names)) {
-      incl_count += ids_by_elems[k][0];
-      if (example_codes.length < NE && k !== exact_key) {
-        Array.prototype.push.apply(example_codes,
-                                   ids_by_elems[k].slice(1, NE+1));
+
+    function toggle_elem(td) {
+      var n = elements.indexOf(td.id);
+      var sel = state[n];
+      state[n] = !sel;
+      td.className = sel ? '' : 'sel';
+      update();
+    };
+
+    function update() {
+      var NE = 15; // number of examples
+      var names = [];
+      var padded_names = [];
+      var indices = [];
+      for (var i = 0; i < elements.length; i++) {
+        var element = elements[i];
+        if (state[i]) {
+          names.push(element);
+          indices.push(i);
+          padded_names.push(element.length == 1 ? element + '_' : element);
+        }
+      }
+      var exact_key = padded_names.join('');
+      if (names.length === 0) {
+        desc.innerHTML = 'Select elements...';
+        for (var i = 0; i < example_tds.length; i++) {
+          setup_example(example_tds[i], null);
+        }
+        return;
+      }
+      var exact_match = ids_by_elems[exact_key];
+      var only_count = exact_match ? exact_match[0] : 0;
+      var example_codes = only_count > 0 ? exact_match.slice(1) : [];
+      var incl_count = 0;
+      for (var k in ids_by_elems) {
+        if (contains(k, padded_names)) {
+          incl_count += ids_by_elems[k][0];
+          if (example_codes.length < NE && k !== exact_key) {
+            Array.prototype.push.apply(example_codes,
+              ids_by_elems[k].slice(1, NE + 1));
+          }
+        }
+      }
+      desc.innerHTML = 'selected: ' + names.join(', ') +
+        '<br/>entries with all selected elements: ' + incl_count +
+        '<br/>with all selected elements and nothing else: ' + only_count;
+      for (var i = 0; i < example_tds.length; i++) {
+        setup_example(example_tds[i], example_codes[i]);
       }
     }
-  }
-  desc.innerHTML = 'selected: ' + names.join(', ') +
-    '<br/>entries with all selected elements: ' + incl_count +
-    '<br/>with all selected elements and nothing else: ' + only_count;
-  for (var i = 0; i < example_tds.length; i++) {
-    setup_example(example_tds[i], example_codes[i]);
-  }
-}
 
-function setup_example(td, code) {
-  if (code != null) {
-    td.innerHTML = '<a href="' + PDB_LINK + code + '">' + code + '</a>';
-    td.style.backgroundImage = show_pics ? 'url(' + image_link(code) + ')' : '';
-  } else {
-    td.innerHTML = '&#xD7;';
-    td.style.backgroundImage = '';
-  }
-}
+    function setup_example(td, code) {
+      if (code != null) {
+        td.innerHTML = '<a href="' + PDB_LINK + code + '">' + code + '</a>';
+        td.style.backgroundImage = show_pics ? 'url(' + image_link(code) + ')' : '';
+      } else {
+        td.innerHTML = '&#xD7;';
+        td.style.backgroundImage = '';
+      }
+    }
 
-function color_for_count(cnt) {
-  if (cnt < 1) return '#f8f8f8';
-  if (cnt < 10) return '#fdfde4';
-  if (cnt < 25) return '#fdfdd0';
-  if (cnt < 100) return '#fdfdbb';
-  if (cnt < 250) return '#fff8a0';
-  if (cnt < 1000) return '#fe8';
-  if (cnt < 5000) return '#fc5';
-  if (cnt < 10000) return '#f93';
-  if (cnt < 30000) return '#e71';
-  if (cnt < 100000) return '#d61';
-  return '#c41';
-}
+    function color_for_count(cnt) {
+      if (cnt < 1) return '#f8f8f8';
+      if (cnt < 10) return '#fdfde4';
+      if (cnt < 25) return '#fdfdd0';
+      if (cnt < 100) return '#fdfdbb';
+      if (cnt < 250) return '#fff8a0';
+      if (cnt < 1000) return '#fe8';
+      if (cnt < 5000) return '#fc5';
+      if (cnt < 10000) return '#f93';
+      if (cnt < 30000) return '#e71';
+      if (cnt < 100000) return '#d61';
+      return '#c41';
+    }
 
-function init_cell(cell) {
-  cell.onclick = function () { toggle_elem(cell); };
-  var cnt = elem_count[elements.indexOf(cell.id)];
-  cell.style.backgroundColor = color_for_count(cnt);
-}
+    function init_cell(cell) {
+      cell.onclick = function () { toggle_elem(cell); };
+      var cnt = elem_count[elements.indexOf(cell.id)];
+      cell.style.backgroundColor = color_for_count(cnt);
+    }
 
-function update_5_15() {
-  document.getElementById('show5').className = show15 ? '' : 'on';
-  document.getElementById('show15').className = show15 ? 'on' : '';
-  document.getElementById('examples').className = show15 ? '' : 'hide_optional';
-}
+    function update_5_15() {
+      document.getElementById('show5').className = show15 ? '' : 'on';
+      document.getElementById('show15').className = show15 ? 'on' : '';
+      document.getElementById('examples').className = show15 ? '' : 'hide_optional';
+    }
 
-return function () {
-// initialization
-  desc = document.getElementById('desc');
-  desc.innerHTML = 'Select elements...';
-  example_tds = document.getElementById('examples').getElementsByTagName('td');
+    return function () {
+      // initialization
+      desc = document.getElementById('desc');
+      desc.innerHTML = 'Select elements...';
+      example_tds = document.getElementById('examples').getElementsByTagName('td');
 
-  var cells = document.getElementById('periodic').getElementsByTagName('td');
-  for (var i = 0; i < cells.length; i++) {
-    if (cells[i].className !== 'empty') init_cell(cells[i]);
-  }
+      var cells = document.getElementById('periodic').getElementsByTagName('td');
+      for (var i = 0; i < cells.length; i++) {
+        if (cells[i].className !== 'empty') init_cell(cells[i]);
+      }
 
-  document.getElementById('show5').onclick = function () {
-    show15 = false;
-    update_5_15();
-  }
-  document.getElementById('show15').onclick = function () {
-    show15 = true;
-    update_5_15();
-  }
-  document.getElementById('showPics').onclick = function () {
-    show_pics = !show_pics;
-    document.getElementById('showPics').className = show_pics ? 'on' : '';
-    update();
-  }
-};
-})();
+      document.getElementById('show5').onclick = function () {
+        show15 = false;
+        update_5_15();
+      }
+      document.getElementById('show15').onclick = function () {
+        show15 = true;
+        update_5_15();
+      }
+      document.getElementById('showPics').onclick = function () {
+        show_pics = !show_pics;
+        document.getElementById('showPics').className = show_pics ? 'on' : '';
+        update();
+      }
+    };
+  })();
 
- </script>
+</script>
+
 </html>
